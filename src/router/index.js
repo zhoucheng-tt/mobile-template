@@ -36,8 +36,13 @@ const routes = [
     name: 'plateNumber',
     component: () => import('@/views/plateNumber/index.vue'),
     meta: { name: '车牌组件', type: 'list' }
+  },
+  {
+    path: '/selectAllOrNotAll',
+    name: 'selectAllOrNotAll',
+    component: () => import('@/views/selectAllOrNotAll/index.vue'),
+    meta: { name: '全选/全不选', type: 'list' }
   }
-
 ]
 
 const router = new VueRouter({

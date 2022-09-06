@@ -8,12 +8,15 @@
 <template>
   <div class='mainbody'>
     <!-- 标题 -->
-    <van-nav-bar title="移动端组件" />
-    <!-- 按钮内容 -->
-    <van-button class="buttonItem"
-                v-for="(item,index) in buttonList"
-                :key="index"
-                @click="$router.push('/'+item.value)">{{item.label}}</van-button>
+    <van-nav-bar title="移动端组件"
+                 class="navbar" />
+    <van-row class="content">
+      <!-- 按钮内容 -->
+      <van-button class="buttonItem"
+                  v-for="(item,index) in buttonList"
+                  :key="index"
+                  @click="$router.push('/'+item.value)">{{item.label}}</van-button>
+    </van-row>
   </div>
 </template>
 
@@ -28,7 +31,8 @@ export default {
     // 这里存放数据
     return {
       buttonList: [
-        { label: '车 牌 组 件', value: 'plateNumber' }
+        { label: '车 牌 组 件', value: 'plateNumber' },
+        { label: '全选 / 全不选', value: 'selectAllOrNotAll' }
       ]
     }
   },
@@ -37,13 +41,9 @@ export default {
   // 监控data中的数据变化
   watch: {},
   // 生命周期 - 创建完成（可以访问当前this实例）
-  created () {
-
-  },
+  created () { },
   // 生命周期 - 挂载完成（可以访问DOM元素）
-  mounted () {
-
-  },
+  mounted () { },
   beforeCreate () { }, // 生命周期 - 创建之前
   beforeMount () { }, // 生命周期 - 挂载之前
   beforeUpdate () { }, // 生命周期 - 更新之前
@@ -60,16 +60,25 @@ export default {
 //@import url(); 引入公共css类
 .mainbody {
   width: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  .buttonItem {
-    width: 93.6%;
+  height: 100%;
+  overflow: hidden;
+  .navbar {
+    width: 100%;
     height: 40px;
-    background: green;
-    color: #ffffff;
-    border-radius: 20px;
-    margin-left: 3.2%;
-    margin-top: 10px;
+  }
+  .content {
+    width: 100%;
+    height: calc(100% - 40px);
+    overflow-y: auto;
+    .buttonItem {
+      width: 93.6%;
+      height: 40px;
+      background: green;
+      color: #ffffff;
+      border-radius: 20px;
+      margin-left: 3.2%;
+      margin-top: 10px;
+    }
   }
 }
 </style>
