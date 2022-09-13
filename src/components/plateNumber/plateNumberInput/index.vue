@@ -145,10 +145,10 @@ export default {
 .mainbody {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-content: center;
+  padding: 0 1%;
   .item {
-    margin: 0 1px;
     .iteminput {
       width: 34px;
       height: 40px;
