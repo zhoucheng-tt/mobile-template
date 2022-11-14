@@ -32,7 +32,9 @@ export default {
     return {
       buttonList: [
         { label: '车 牌 组 件', value: 'plateNumber' },
-        { label: '全选 / 全不选', value: 'selectAllOrNotAll' }
+        { label: '全选 / 全不选', value: 'selectAllOrNotAll' },
+        { label: '瀑布布局CSS版', value: 'waterFallLayOut' },
+        { label: '瀑布布局1', value: 'waterFallLayOut1' }
       ]
     }
   },

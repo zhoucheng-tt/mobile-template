@@ -7,7 +7,6 @@
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import { Toast } from 'vant'
 
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push (location) {
@@ -42,6 +41,18 @@ const routes = [
     name: 'selectAllOrNotAll',
     component: () => import('@/views/selectAllOrNotAll/index.vue'),
     meta: { name: '全选/全不选', type: 'list' }
+  },
+  {
+    path: '/waterFallLayOut',
+    name: 'waterFallLayOut',
+    component: () => import('@/views/waterFallLayOut/index.vue'),
+    meta: { name: '瀑布布局', type: 'list' }
+  },
+  {
+    path: '/waterFallLayOut1',
+    name: 'waterFallLayOut1',
+    component: () => import('@/views/waterFallLayOut1/index.vue'),
+    meta: { name: '瀑布布局1', type: 'list' }
   }
 ]
 
@@ -51,20 +62,20 @@ const router = new VueRouter({
 })
 
 // 全局路由守卫
-router.beforeEach((to, from, next) => {
-  // 需要绑定停车场才能进入以下路径
-  const path = ['/outCharge', '/register', '/parkingOrder', '/signIn']
-  if (path.indexOf(to.path) !== -1) {
-    // 判断是否绑定停车场v
-    if (!Vue.prototype.$cookie.get('managePark')) {
-      Toast('请先绑定停车场')
-      next('/homePage')
-    } else {
-      next()
-    }
-  } else {
-    next()
-  }
-})
+// router.beforeEach((to, from, next) => {
+// // 需要绑定停车场才能进入以下路径
+// const path = ['/outCharge', '/register', '/parkingOrder', '/signIn']
+// if (path.indexOf(to.path) !== -1) {
+//   // 判断是否绑定停车场
+//   if (!Vue.prototype.$cookie.get('managePark')) {
+//     Toast('请先绑定停车场')
+//     next('/homePage')
+//   } else {
+//     next()
+//   }
+// } else {
+//   next()
+// }
+// })
 
 export default router
