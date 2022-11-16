@@ -7,7 +7,7 @@
 -->
 <template>
   <div class='mainbody'>
-    <van-nav-bar title="全选/全不选"
+    <van-nav-bar :title=titleName
                  left-text="返回"
                  left-arrow
                  @click-left="handleClickTitleLeft" />
@@ -58,6 +58,7 @@ export default {
   data () {
     // 这里存放数据
     return {
+      titleName: '',
       // 内容数组
       contentList: [
         { number: 1 },
@@ -77,7 +78,9 @@ export default {
   // 生命周期 - 创建完成（可以访问当前this实例）
   created () { },
   // 生命周期 - 挂载完成（可以访问DOM元素）
-  mounted () { },
+  mounted () {
+    this.titleName = this.$route.query.titleName
+  },
   beforeCreate () { }, // 生命周期 - 创建之前
   beforeMount () { }, // 生命周期 - 挂载之前
   beforeUpdate () { }, // 生命周期 - 更新之前

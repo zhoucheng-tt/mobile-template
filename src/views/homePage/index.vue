@@ -15,7 +15,7 @@
       <van-button class="buttonItem"
                   v-for="(item,index) in buttonList"
                   :key="index"
-                  @click="$router.push('/'+item.value)">{{item.label}}</van-button>
+                  @click="$router.push({name:item.value,query:{titleName:item.label}})">{{item.label}}</van-button>
     </van-row>
   </div>
 </template>
@@ -33,7 +33,7 @@ export default {
       buttonList: [
         { label: '车 牌 组 件', value: 'plateNumber' },
         { label: '全选 / 全不选', value: 'selectAllOrNotAll' },
-        { label: '瀑布布局CSS版', value: 'waterFallLayOut' },
+        { label: '瀑布布局', value: 'waterFallLayOut' },
         { label: '瀑布布局1', value: 'waterFallLayOut1' }
       ]
     }

@@ -53,6 +53,12 @@ const routes = [
     name: 'waterFallLayOut1',
     component: () => import('@/views/waterFallLayOut1/index.vue'),
     meta: { name: '瀑布布局1', type: 'list' }
+  },
+  {
+    path: '/test',
+    name: 'test',
+    component: () => import('@/views/test/index.vue'),
+    meta: { name: 'test', type: 'list' }
   }
 ]
 

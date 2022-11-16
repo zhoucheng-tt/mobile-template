@@ -7,18 +7,23 @@
 -->
 <template>
   <div class='mainbody'>
-    <van-nav-bar title="瀑布布局CSS版"
+    <van-nav-bar title="瀑布布局"
                  left-text="返回"
                  left-arrow
                  @click-left="handleClickTitleLeft" />
+    <!-- 内容由很多宽相同高不同的div组成 -->
     <div class="content">
-      <!-- 内容由很多 宽相同高不同的div组成 -->
-      <div class="content-item"
+      <div class="item"
            v-for="(item,index) in contentList"
            :key="index"
-           :style={width:item.width,height:item.height}
+           :style={width:item.width}
            @click="$toast(item.id)">
-        {{item.id}}
+        <div>{{item.content}}{{item.id}}</div>
+        <!-- <div v-if="item.id===1">{{item.content}}</div> -->
+        <img v-if="item.img"
+             style="width:100%;height:100px"
+             :src=item.img
+             alt="">
       </div>
     </div>
   </div>
@@ -33,114 +38,122 @@ export default {
   data () {
     // 这里存放数据
     return {
-      offsetWidth: 0,
       contentList: [
-        { width: '200px', height: '100px', id: 1 },
-        { width: '200px', height: '110px', id: 2 },
-        { width: '200px', height: '100px', id: 3 },
-        { width: '200px', height: '110px', id: 4 },
-        { width: '200px', height: '100px', id: 5 },
-        { width: '200px', height: '110px', id: 6 },
-        { width: '200px', height: '100px', id: 7 },
-        { width: '200px', height: '110px', id: 8 },
-        { width: '200px', height: '100px', id: 9 },
-        { width: '200px', height: '110px', id: 10 },
-        { width: '200px', height: '100px', id: 11 },
-        { width: '200px', height: '110px', id: 12 },
-        { width: '200px', height: '100px', id: 13 },
-        { width: '200px', height: '110px', id: 14 },
-        { width: '200px', height: '100px', id: 15 },
-        { width: '200px', height: '110px', id: 16 },
-        { width: '200px', height: '100px', id: 17 },
-        { width: '200px', height: '110px', id: 18 },
-        { width: '200px', height: '100px', id: 19 },
-        { width: '200px', height: '110px', id: 20 },
-        { width: '200px', height: '100px', id: 21 },
-        { width: '200px', height: '110px', id: 22 },
-        { width: '200px', height: '100px', id: 23 },
-        { width: '200px', height: '110px', id: 24 },
-        { width: '200px', height: '100px', id: 25 },
-        { width: '200px', height: '110px', id: 26 },
-        { width: '200px', height: '100px', id: 27 },
-        { width: '200px', height: '110px', id: 28 },
-        { width: '200px', height: '100px', id: 29 },
-        { width: '200px', height: '110px', id: 30 }
+        {
+          content: '天不生我李纯罡',
+          img: require('@/assets/background/back.jpeg'),
+          id: 1
+        },
+        { content: '50px', id: 2 },
+        {
+          content: '剑道万古如长夜',
+          img: require('@/assets/background/back.jpeg'),
+          id: 3
+        },
+        { content: '60px', id: 4 },
+        { content: '70px', id: 5 },
+        { content: '110px', id: 6 },
+        { content: '80px', id: 7 },
+        { content: '110px', id: 8 },
+        { content: '90px', id: 9 },
+        { content: '110px', id: 10 },
+        { content: '80px', id: 11 },
+        { content: '110px', id: 12 },
+        { content: '100px', id: 13 },
+        { content: '60px', id: 14 },
+        { content: '100px', id: 15 },
+        { content: '70px', id: 16 },
+        { content: '100px', id: 17 },
+        { content: '90px', id: 18 },
+        { content: '100px', id: 19 },
+        { content: '110px', id: 20 },
+        { content: '100px', id: 21 },
+        { content: '110px', id: 22 },
+        { content: '80px', id: 23 },
+        { content: '110px', id: 24 },
+        { content: '60px', id: 25 },
+        { content: '110px', id: 26 },
+        { content: '90px', id: 27 },
+        { content: '110px', id: 28 },
+        { content: '100px', id: 29 },
+        { content: '80px', id: 30 }
       ]
     }
   },
   // 监听属性 类似于data概念
   computed: {},
   // 监控data中的数据变化
-  watch: {
-    offsetWidth (val) {
-      console.log(val)
-      this.waterFall()
-    }
-  },
+  watch: {},
   // 生命周期 - 创建完成（可以访问当前this实例）
   created () { },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted () {
-    const that = this
-    window.onresize = () => {
-      return (() => {
-        that.offsetWidth = document.body.offsetWidth
-      })()
-    }
-    // 页面初始化调用
     this.waterFall()
   },
   // 方法集合
   methods: {
     // 宽度需相同，高度不同
     waterFall () {
-      // 设置单位
-      const unit = 'px'
       // 设置container盒子的宽度
       const container = document.getElementsByClassName('content')
       // 设置每项内容
-      const item = document.getElementsByClassName('content-item')
-      // 获取元素的宽度(含border，padding)
-      const itemWidth = item[0].offsetWidth
+      const item = document.getElementsByClassName('item')
+      // 设置单位
+      const unit = 'px'
       // 计算出浏览器窗口的宽度
       const clientWidth = document.documentElement.clientWidth
-      // 计算出应该放几列（向下取整）浏览器的可视区域的宽度 / 一个item元素的宽度 = 一行的排列的元素的个数
-      const columnCount = Math.floor(clientWidth / itemWidth)
-      // 设置容器的宽度 列数*宽度）
-      container[0].style.width = columnCount * itemWidth + unit
-      // 每行宽度
-      const lineRowWitdh = container[0].style.width.split(unit)[0]
-      // 设置整体左边距离
-      container[0].style.marginLeft = Number(clientWidth - lineRowWitdh) / 2 + unit
-      // 设置每一个item元素的排列位置
-      // 第一行整体的top值都是0 后面的依次找上一行高度最小的容器，在它下面进行排列
+      // 上 左 间距
+      const spacing = 10
+      // 设置主体宽度
+      container[0].style.width = (clientWidth - 2 * spacing) + unit
+      const containerWidth = container[0].style.width.split(unit)[0]
+      container[0].style.left = spacing + unit
+      // 左侧数组
+      const leftArr = []
+      // 右侧数组
+      const rightArr = []
+      // 获取元素的宽度(含border，padding)
+      const itemWidth = containerWidth / 2
       const heightArr = []
+      // 循环盒子分为左右两组
       for (let i = 0; i < item.length; i++) {
-        // 定位第一行的图片
-        if (i < columnCount) {
-          // 设置第一行的宽度
-          item[i].style.width = itemWidth * 0.95 + unit
+        // 每个宽度
+        item[i].style.width = itemWidth * 0.95 + unit
+        if (i === 0 || i === 1) {
           item[i].style.left = Number(i * itemWidth + Math.floor((itemWidth * 0.05) / 2)) + unit
-          item[i].style.top = 0
-          // 第一行的高度
+          item[i].style.marginLeft = Math.floor((itemWidth * 0.05) / 2) + unit
+          item[i].style.top = 10
           heightArr.push(item[i].offsetHeight)
         } else {
-          // 盒子距离顶部的距离
-          for (let j = 0; j < heightArr.length; j++) {
-            heightArr[j] = heightArr[j] + 5
-          }
-          // 第一行之后的 选择总高度最小的列
           const min = Math.min(...heightArr)
           const index = heightArr.indexOf(min)
           item[i].style.left = Number(index * itemWidth + Math.floor((itemWidth * 0.05) / 2)) + unit
-          // 将每个元素定位到当前总高度最小的列下
+          item[i].style.marginLeft = Math.floor((itemWidth * 0.05) / 2) + unit
           item[i].style.top = min + unit
-          // 设置第二行的宽度
-          item[i].style.width = itemWidth * 0.95 + unit
-          // 当前定位的元素加入该列
           heightArr[index] += item[i].offsetHeight
         }
+
+        const itemHeight = window.getComputedStyle(item[i]).getPropertyValue('height')
+        if (Number(item[i].style.left.split(unit)[0]) === Number(Math.floor((itemWidth * 0.05) / 2))) {
+          leftArr.push({ idx: i, height: itemHeight })
+        } else {
+          rightArr.push({ idx: i, height: itemHeight })
+        }
       }
+      let leftHeightSum = 0
+      leftArr.forEach((itemLeft, indexLeft) => {
+        const top = Number((indexLeft) * spacing)
+        const leftTop = leftHeightSum + Number(top)
+        item[itemLeft.idx].style.top = leftTop + unit
+        leftHeightSum = leftHeightSum + Number(window.getComputedStyle(item[itemLeft.idx]).getPropertyValue('height').split(unit)[0])
+      })
+      let rightHeightSum = 0
+      rightArr.forEach((itemRight, indexRight) => {
+        const top = Number((indexRight) * spacing)
+        const leftTop = rightHeightSum + Number(top)
+        item[itemRight.idx].style.top = leftTop + unit
+        rightHeightSum = rightHeightSum + Number(window.getComputedStyle(item[itemRight.idx]).getPropertyValue('height').split(unit)[0])
+      })
     },
     // 点击返回
     handleClickTitleLeft () {
@@ -168,17 +181,25 @@ export default {
     overflow-x: hidden;
     overflow-y: auto;
     position: relative;
-    .content-item {
-      background-image: url('~@/assets/background/back.jpeg');
+    .item {
+      height: auto;
+      // background-image: url('~@/assets/background/back.jpeg');
       background-size: 100% 100%;
       background-repeat: no-repeat;
-      box-shadow: inset 0px 0px 2px black;
       color: red;
       font-size: 30px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       position: absolute;
+      border: 1px solid red;
+      // box-shadow: inset 1px 1px red;
+      word-wrap: break-word; // 控制换行
+      word-break: break-all; // 控制换行
+      overflow: hidden; // 控制换行
+    }
+    .item:nth-child(10) {
+      height: 110px;
+    }
+    .item:nth-last-child(6) {
+      height: 100px;
     }
   }
 }
