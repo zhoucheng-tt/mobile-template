@@ -49,9 +49,9 @@ const routes = [
     meta: { name: '瀑布布局', type: 'list' }
   },
   {
-    path: '/waterFallLayOut1',
-    name: 'waterFallLayOut1',
-    component: () => import('@/views/waterFallLayOut1/index.vue'),
+    path: '/longitudinalShuffling',
+    name: 'longitudinalShuffling',
+    component: () => import('@/views/longitudinalShuffling/index.vue'),
     meta: { name: '瀑布布局1', type: 'list' }
   },
   {

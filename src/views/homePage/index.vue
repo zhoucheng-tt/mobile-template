@@ -34,7 +34,7 @@ export default {
         { label: '车 牌 组 件', value: 'plateNumber' },
         { label: '全选 / 全不选', value: 'selectAllOrNotAll' },
         { label: '瀑布布局', value: 'waterFallLayOut' },
-        { label: '瀑布布局1', value: 'waterFallLayOut1' }
+        { label: '纵向轮播', value: 'longitudinalShuffling' }
       ]
     }
   },
