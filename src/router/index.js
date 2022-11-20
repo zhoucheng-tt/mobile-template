@@ -49,6 +49,19 @@ const routes = [
     meta: { name: '瀑布布局', type: 'list' }
   },
   {
+    path: '/imgWaterMark',
+    name: 'imgWaterMark',
+    component: () => import('@/views/imgWaterMark/index.vue'),
+    meta: { name: '图片水印', type: 'list' }
+  },
+  {
+    path: '/longitudeDragDiv',
+    name: 'longitudeDragDiv',
+    component: () => import('@/views/longitudeDragDiv/index.vue'),
+    meta: { name: '纵向拖拽盒子', type: 'list' }
+  },
+
+  {
     path: '/longitudinalShuffling',
     name: 'longitudinalShuffling',
     component: () => import('@/views/longitudinalShuffling/index.vue'),
