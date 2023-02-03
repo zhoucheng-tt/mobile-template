@@ -36,7 +36,8 @@ export default {
         { label: '瀑布布局', value: 'waterFallLayOut' },
         { label: '图片水印', value: 'imgWaterMark' },
         { label: '纵向拖拽盒子', value: 'longitudeDragDiv' },
-        { label: '纵向轮播', value: 'longitudinalShuffling' }
+        { label: '输入框弹窗选择', value: 'inputPopupSelect' }
+        // { label: '纵向轮播', value: 'longitudinalShuffling' }
       ]
     }
   },

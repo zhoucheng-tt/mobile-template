@@ -60,12 +60,17 @@ const routes = [
     component: () => import('@/views/longitudeDragDiv/index.vue'),
     meta: { name: '纵向拖拽盒子', type: 'list' }
   },
-
   {
     path: '/longitudinalShuffling',
     name: 'longitudinalShuffling',
     component: () => import('@/views/longitudinalShuffling/index.vue'),
-    meta: { name: '瀑布布局1', type: 'list' }
+    meta: { name: '纵向轮播', type: 'list' }
+  },
+  {
+    path: '/inputPopupSelect',
+    name: 'inputPopupSelect',
+    component: () => import('@/views/inputPopupSelect/index.vue'),
+    meta: { name: '输入框弹窗选择', type: 'list' }
   },
   {
     path: '/test',
