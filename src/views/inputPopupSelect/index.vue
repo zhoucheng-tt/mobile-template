@@ -12,6 +12,14 @@
                  left-arrow
                  @click-left="handleClickTitleLeft" />
     <div class="content">
+
+      <!-- 业务组件 -->
+      <fieldSelect v-model="fieldBind"
+                   :actionSheetList="actionSheetList"
+                   :actionSheetTitle="actionSheetTitle"></fieldSelect>
+
+      <van-button @click="handleClick"
+                  class="buttonItem"> 点击 </van-button>
     </div>
   </div>
 </template>
@@ -19,53 +27,45 @@
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 // 例如：import 《组件名称》 from '《组件路径》';
+import fieldSelect from './components/fieldSelect.vue'
 export default {
   // import引入的组件需要注入到对象中才能使用
   components: {
+    fieldSelect
   },
   data () {
     // 这里存放数据
     return {
       titleName: '',
-      dataList: [
-        {
-          key: 1,
-          value: 1
-        },
-        {
-          key: 2,
-          value: 2
-        },
-        {
-          key: 3,
-          value: 3
-        },
-        {
-          key: 4,
-          value: 4
-        },
-        {
-          key: 5,
-          value: 5
-        }
+
+      fieldBind: {},
+      actionSheetTitle: '弹窗标题',
+      actionSheetList: [
+        { name: '样例内容1', code: 1, color: 'red' },
+        { name: '样例内容2', code: 2 },
+        { name: '样例内容3', code: 3 },
+        { name: '样例内容4', code: 4, disabled: true },
+        { name: '样例内容5', code: 5 },
+        { name: '样例内容6', code: 6 }
       ]
+
     }
   },
   // 监听属性 类似于data概念
-  computed: {
-  },
+  computed: {},
   // 监控data中的数据变化
   watch: {},
   // 生命周期 - 创建完成（可以访问当前this实例）
-  created () {
-
-  },
+  created () { },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted () {
     this.titleName = this.$route.query.titleName
   },
   // 方法集合
   methods: {
+    handleClick () {
+      console.log(this.fieldBind)
+    },
     // 点击返回
     handleClickTitleLeft () {
       this.$router.go(-1)
@@ -89,9 +89,19 @@ export default {
   overflow-y: auto;
   .content {
     width: 100%;
-    height: calc(100% - 46px);
+    height: calc(100% - 56px);
+    margin-top: 10px;
     overflow-x: hidden;
     overflow-y: auto;
+    .buttonItem {
+      width: 93.6%;
+      height: 40px;
+      background: green;
+      color: #ffffff;
+      border-radius: 20px;
+      margin-left: 3.2%;
+      margin-top: 10px;
+    }
   }
 }
 </style>

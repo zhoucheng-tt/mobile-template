@@ -144,45 +144,39 @@ export default {
 //@import url(); 引入公共css类
 .mainbody {
   width: 100%;
+  height: 50px;
   display: flex;
   justify-content: space-around;
   align-content: center;
-  padding: 0 1%;
+  padding: 0 2%;
   .item {
+    width: 8%;
+    height: 60%;
+    text-align: center;
     .iteminput {
-      width: 34px;
-      height: 40px;
+      width: 100%;
+      height: 100%;
       text-align: center;
       border: 2px solid #26aefc;
     }
     .iteminput:focus {
-      border-width: 2px;
-      border: 2px solid green;
+      border-color: red;
     }
   }
   .itemLast {
+    width: 8%;
+    height: 60%;
+    text-align: center;
     position: relative;
     .iteminput {
-      width: 34px;
-      height: 40px;
+      width: 100%;
+      height: 100%;
       text-align: center;
-      border: 2px solid #26aefc;
-    }
-    .iteminput:focus {
       border: 2px solid green;
     }
-  }
-  .itemLast::after {
-    content: '新能源';
-    position: absolute;
-    left: 0;
-    top: -3px;
-    width: 40px;
-    text-align: center;
-    background: green;
-    color: #ffffff;
-    font-size: 12px;
-    border-radius: 20px;
+    .iteminput:focus {
+      border-color: red;
+    }
   }
 }
 </style>

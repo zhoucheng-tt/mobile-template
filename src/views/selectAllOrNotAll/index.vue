@@ -11,39 +11,35 @@
                  left-text="返回"
                  left-arrow
                  @click-left="handleClickTitleLeft" />
-    <!-- 选择内容 -->
+    <!-- 业务组件 -->
     <van-row class="content">
       <van-checkbox-group ref="checkboxGroup"
-                          v-model="checkboxGroupResult"
-                          @change="checkboxGroupChange">
+                          v-model="groupResult"
+                          @change="handleChangeGroup">
         <van-row class="content-item"
                  v-for="(item,index) in contentList"
                  :key=index>
           <van-checkbox class="item-checkbox"
-                        icon-size="17px"
-                        :name="item">
-            <van-row class="item-content"> 单个数 ：{{item.number}} 个</van-row>
+                        :name="item"
+                        :disabled="item.code===2">
+            <van-row class="item-content"> 单个数 ：{{item.number}} 元</van-row>
           </van-checkbox>
         </van-row>
       </van-checkbox-group>
     </van-row>
-    <!-- 底部内容 -->
+    <!-- 业务组建 -->
     <van-row class="bottom">
-      <van-checkbox v-model="selectAllOrNotAll"
-                    class="bottom-checkbox"
-                    icon-size="17px"
-                    @click="changeAll(selectAllOrNotAll)">
-        {{selectAllOrNotAll? '全不选':'全选'}}
-      </van-checkbox>
+      <van-checkbox class="bottom-checkbox"
+                    v-model="selectAllOrNotAll"
+                    @click="changeAll(selectAllOrNotAll)"
+                    icon-size="16px">{{selectAllOrNotAll? '全不选':'全选'}}</van-checkbox>
       <van-row class="bottom-text">
         <span class="text-total">总数：</span>
-        <span class="text-totalNumber"> {{total}}</span>
-        <span class="text-danwei">个</span>
+        <span class="text-totalNumber"> {{ total }} </span>
+        <span class="text-danwei">元</span>
       </van-row>
       <van-row class="bottom-button"
-               @click="handleClickNext">
-        下一步
-      </van-row>
+               @click="handleClickNext"> 下一步 </van-row>
     </van-row>
   </div>
 </template>
@@ -51,7 +47,6 @@
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 // 例如：import 《组件名称》 from '《组件路径》';
-
 export default {
   // import引入的组件需要注入到对象中才能使用
   components: {},
@@ -59,16 +54,17 @@ export default {
     // 这里存放数据
     return {
       titleName: '',
-      // 内容数组
+
       contentList: [
-        { number: 1 },
-        { number: 2 },
-        { number: 3 },
-        { number: 1 }
-      ],
+        { name: '第一项', code: 1, number: 1 },
+        { name: '第二项', code: 2, number: 2 },
+        { name: '第三项', code: 3, number: 3 },
+        { name: '第四项', code: 4, number: 4 }
+      ], // 内容数组
+
       total: 0, // 总数
       selectAllOrNotAll: '', // 全选或全不选
-      checkboxGroupResult: [] // 多选绑定数组
+      groupResult: [] // 多选绑定数组
     }
   },
   // 监听属性 类似于data概念
@@ -90,30 +86,41 @@ export default {
   activated () { }, // 如果页面有keep-alive缓存功能，这个函数会触发
   // 方法集合
   methods: {
-    // 全选或全不选
-    changeAll (state) {
-      this.$refs.checkboxGroup.toggleAll(state)
-    },
     // 多选组发生改变
-    checkboxGroupChange (names) {
-      if (names.length < this.contentList.length) {
+    handleChangeGroup (names) {
+      // 需要先过滤 不可选中 的
+      const filtetrList = this.contentList.filter(item => {
+        if (item.code !== 2) {
+          return item
+        }
+      })
+
+      if (names.length < filtetrList.length) {
         this.selectAllOrNotAll = false
       } else {
         this.selectAllOrNotAll = true
       }
+
       let total = 0
       names.forEach(item => {
         total += Number(item.number)
       })
       this.total = total
     },
+
+    // 全选或全不选
+    changeAll (state) {
+      this.$refs.checkboxGroup.toggleAll({
+        skipDisabled: true,
+        checked: state
+      })
+    },
     // 点击下一步
     handleClickNext () {
       if (Number(this.total) === 0) {
         this.$toast('总数不能为0，请先选择')
       } else {
-        // 所选数组打印
-        console.log(this.checkboxGroupResult)
+        console.log(this.groupResult)
       }
     },
     // 顶部返回
@@ -152,51 +159,46 @@ export default {
       }
     }
   }
-}
-.bottom {
-  width: 100%;
-  height: 46px;
-  line-height: 46px;
-  background-color: white;
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  .bottom-checkbox {
-    width: 20%;
-    height: 100%;
-    font-size: 15px;
-    color: #333333;
+  .bottom {
+    width: 100%;
+    height: 46px;
+    line-height: 46px;
+    background-color: white;
+    position: absolute;
+    bottom: 0;
     display: flex;
-    justify-content: center;
-  }
-  .bottom-text {
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: space-around;
     align-items: center;
-    .text-total {
-      font-size: 13px;
-      color: #666666;
-    }
-    .text-totalNumber {
-      font-size: 19px;
-      color: #19a9fc;
-      text-align: right;
-    }
-    .text-danwei {
-      font-size: 15px;
+    .bottom-checkbox {
+      width: 20%;
+      font-size: 14px;
       color: #333333;
+      display: flex;
+      justify-content: center;
     }
-  }
-  .bottom-button {
-    width: 30%;
-    height: 100%;
-    font-size: 17px;
-    color: #ffffff;
-    background: #19a9fc;
-    text-align: center;
+    .bottom-text {
+      width: 50%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      font-size: 14px;
+      .text-total {
+        color: #333333;
+      }
+      .text-totalNumber {
+        font-size: 18px;
+        color: #19a9fc;
+      }
+      .text-danwei {
+        color: #333333;
+      }
+    }
+    .bottom-button {
+      width: 30%;
+      background: #19a9fc;
+      font-size: 17px;
+      color: #ffffff;
+      text-align: center;
+    }
   }
 }
 </style>
