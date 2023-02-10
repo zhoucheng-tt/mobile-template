@@ -8,7 +8,7 @@
 
 <template>
   <div class='mainbody'>
-    <van-nav-bar :title=titleName
+    <van-nav-bar :title=$route.query.titleName
                  left-text="返回"
                  left-arrow
                  @click-left="handleClickTitleLeft" />
@@ -67,7 +67,6 @@ export default {
   data () {
     // 这里存放数据
     return {
-      titleName: '',
       // 车牌颜色
       plateColorList: [
         { code: '2', name: '蓝色' },
@@ -118,7 +117,6 @@ export default {
   created () { },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted () {
-    this.titleName = this.$route.query.titleName
     // 给默认值
     // this.$refs.numInput.setInput('渝')
   },

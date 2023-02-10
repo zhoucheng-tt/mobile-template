@@ -26,6 +26,10 @@ module.exports = {
     }
   },
   configureWebpack: {
+    externals: {
+      AMap: 'AMap', // 高德地图配置
+      AMapUI: 'AMapUI'
+    },
     name: 'mobile-template',
     resolve: {
       alias: {

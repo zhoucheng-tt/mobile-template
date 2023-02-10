@@ -7,7 +7,7 @@
 -->
 <template>
   <div class='mainbody'>
-    <van-nav-bar :title=titleName
+    <van-nav-bar :title=$route.query.titleName
                  left-text="返回"
                  left-arrow
                  @click-left="handleClickTitleLeft" />
@@ -53,8 +53,6 @@ export default {
   data () {
     // 这里存放数据
     return {
-      titleName: '',
-
       contentList: [
         { name: '第一项', code: 1, number: 1 },
         { name: '第二项', code: 2, number: 2 },
@@ -75,7 +73,7 @@ export default {
   created () { },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted () {
-    this.titleName = this.$route.query.titleName
+
   },
   beforeCreate () { }, // 生命周期 - 创建之前
   beforeMount () { }, // 生命周期 - 挂载之前

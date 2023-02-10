@@ -36,7 +36,11 @@ export default {
         { label: '瀑布布局', value: 'waterFallLayOut' },
         { label: '图片水印', value: 'imgWaterMark' },
         { label: '纵向拖拽盒子', value: 'longitudeDragDiv' },
-        { label: '输入框弹窗选择', value: 'inputPopupSelect' }
+        { label: '输入框弹窗选择', value: 'inputPopupSelect' },
+        { label: '单个订单订单详情', value: 'singleOrderList' },
+        { label: '多个订单订单详情', value: 'multipleOrderList' },
+        { label: 'H5获取地理位置', value: 'h5getLocation' }
+
         // { label: '纵向轮播', value: 'longitudinalShuffling' }
       ]
     }

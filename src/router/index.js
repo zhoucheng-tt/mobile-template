@@ -73,6 +73,24 @@ const routes = [
     meta: { name: '输入框弹窗选择', type: 'list' }
   },
   {
+    path: '/singleOrderList',
+    name: 'singleOrderList',
+    component: () => import('@/views/parkCar/singleOrderList/index.vue'),
+    meta: { name: '当个订单订单详情', type: 'list' }
+  },
+  {
+    path: '/multipleOrderList',
+    name: 'multipleOrderList',
+    component: () => import('@/views/parkCar/multipleOrderList/index.vue'),
+    meta: { name: '多个订单订单详情', type: 'list' }
+  },
+  {
+    path: '/h5getLocation',
+    name: 'h5getLocation',
+    component: () => import('@/views/h5getLocation/index.vue'),
+    meta: { name: '获取定位', type: 'list' }
+  },
+  {
     path: '/test',
     name: 'test',
     component: () => import('@/views/test/index.vue'),

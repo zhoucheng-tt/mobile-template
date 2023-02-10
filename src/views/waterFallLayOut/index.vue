@@ -7,7 +7,7 @@
 -->
 <template>
   <div class='mainbody'>
-    <van-nav-bar title="瀑布布局"
+    <van-nav-bar :title=$route.query.titleName
                  left-text="返回"
                  left-arrow
                  @click-left="handleClickTitleLeft" />
