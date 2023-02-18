@@ -6,8 +6,14 @@
  * @LastEditors: zhoucheng
 -->
 <template>
-  <div class=''>
-
+  <div class='mainbody'>
+    <div class="content"
+         ref="contentRef">
+      <div class="title"
+           ref="titleRef">
+        123
+      </div>
+    </div>
   </div>
 </template>
 
@@ -21,30 +27,29 @@ export default {
   data () {
     // 这里存放数据
     return {
-
+      list: [
+        { code: 1, name: '一', value: 'one' },
+        { code: 2, name: '二', value: 'two' },
+        { code: 3, name: '三', value: 'three' },
+        { code: 4, name: '四', value: 'four' },
+        { code: 5, name: '五', value: 'five' }
+      ]
     }
+  },
+  // 生命周期 - 挂载完成（可以访问DOM元素）
+  mounted () {
+    console.log(this.$refs)
+  },
+  // 方法集合
+  methods: {
+
   },
   // 监听属性 类似于data概念
   computed: {},
   // 监控data中的数据变化
   watch: {},
   // 生命周期 - 创建完成（可以访问当前this实例）
-  created () {
-
-  },
-  // 生命周期 - 挂载完成（可以访问DOM元素）
-  mounted () {
-    const arr = [1, 2, 3, 4]
-    let sum = 0
-    arr.forEach(item => {
-      sum = sum + item
-    })
-    console.log(sum) // 10
-  },
-  // 方法集合
-  methods: {
-
-  },
+  created () { },
   beforeCreate () { }, // 生命周期 - 创建之前
   beforeMount () { }, // 生命周期 - 挂载之前
   beforeUpdate () { }, // 生命周期 - 更新之前

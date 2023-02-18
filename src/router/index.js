@@ -30,66 +30,88 @@ const routes = [
     component: () => import('@/views/homePage/index.vue'),
     meta: { name: '首页', type: 'list' }
   },
+  // CSS
   {
-    path: '/plateNumber',
-    name: 'plateNumber',
-    component: () => import('@/views/plateNumber/index.vue'),
-    meta: { name: '车牌组件', type: 'list' }
-  },
-  {
-    path: '/selectAllOrNotAll',
-    name: 'selectAllOrNotAll',
-    component: () => import('@/views/selectAllOrNotAll/index.vue'),
-    meta: { name: '全选/全不选', type: 'list' }
+    path: '/cssClass',
+    name: 'cssClass',
+    component: () => import('@/views/cssClass/index.vue'),
+    meta: { name: 'css类', type: 'list' }
   },
   {
     path: '/waterFallLayOut',
     name: 'waterFallLayOut',
-    component: () => import('@/views/waterFallLayOut/index.vue'),
+    component: () => import('@/views/cssClass/waterFallLayOut/index.vue'),
     meta: { name: '瀑布布局', type: 'list' }
   },
   {
     path: '/imgWaterMark',
     name: 'imgWaterMark',
-    component: () => import('@/views/imgWaterMark/index.vue'),
+    component: () => import('@/views/cssClass/imgWaterMark/index.vue'),
     meta: { name: '图片水印', type: 'list' }
+  },
+  // JS
+  {
+    path: '/jsClass',
+    name: 'jsClass',
+    component: () => import('@/views/jsClass/index.vue'),
+    meta: { name: 'js类', type: 'list' }
   },
   {
     path: '/longitudeDragDiv',
     name: 'longitudeDragDiv',
-    component: () => import('@/views/longitudeDragDiv/index.vue'),
+    component: () => import('@/views/jsClass/longitudeDragDiv/index.vue'),
     meta: { name: '纵向拖拽盒子', type: 'list' }
   },
   {
     path: '/longitudinalShuffling',
     name: 'longitudinalShuffling',
-    component: () => import('@/views/longitudinalShuffling/index.vue'),
+    component: () => import('@/views/jsClass/longitudinalShuffling/index.vue'),
     meta: { name: '纵向轮播', type: 'list' }
+  },
+  {
+    path: '/h5getLocation',
+    name: 'h5getLocation',
+    component: () => import('@/views/jsClass/h5getLocation/index.vue'),
+    meta: { name: '获取定位', type: 'list' }
+  },
+  // component
+  {
+    path: '/componentClass',
+    name: 'componentClass',
+    component: () => import('@/views/componentClass/index.vue'),
+    meta: { name: '组件类', type: 'list' }
+  },
+  {
+    path: '/plateNumber',
+    name: 'plateNumber',
+    component: () => import('@/views/componentClass/plateNumber/index.vue'),
+    meta: { name: '车牌组件', type: 'list' }
+  },
+  {
+    path: '/selectAllOrNotAll',
+    name: 'selectAllOrNotAll',
+    component: () => import('@/views/componentClass/selectAllOrNotAll/index.vue'),
+    meta: { name: '全选/全不选', type: 'list' }
   },
   {
     path: '/inputPopupSelect',
     name: 'inputPopupSelect',
-    component: () => import('@/views/inputPopupSelect/index.vue'),
+    component: () => import('@/views/componentClass/inputPopupSelect/index.vue'),
     meta: { name: '输入框弹窗选择', type: 'list' }
   },
   {
     path: '/singleOrderList',
     name: 'singleOrderList',
-    component: () => import('@/views/parkCar/singleOrderList/index.vue'),
+    component: () => import('@/views/componentClass/singleOrderList/index.vue'),
     meta: { name: '当个订单订单详情', type: 'list' }
   },
   {
     path: '/multipleOrderList',
     name: 'multipleOrderList',
-    component: () => import('@/views/parkCar/multipleOrderList/index.vue'),
+    component: () => import('@/views/componentClass/multipleOrderList/index.vue'),
     meta: { name: '多个订单订单详情', type: 'list' }
   },
-  {
-    path: '/h5getLocation',
-    name: 'h5getLocation',
-    component: () => import('@/views/h5getLocation/index.vue'),
-    meta: { name: '获取定位', type: 'list' }
-  },
+  // test
   {
     path: '/test',
     name: 'test',
