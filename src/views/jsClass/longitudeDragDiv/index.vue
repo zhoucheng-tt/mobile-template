@@ -119,7 +119,7 @@ export default {
       margin-left: 3%;
       margin-top: 10px;
       height: 40px;
-      background: greenyellow;
+      background: #43e97b;
       color: #000000;
       font-size: 20px;
       text-align: center;

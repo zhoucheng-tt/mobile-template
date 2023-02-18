@@ -99,16 +99,23 @@ const routes = [
     component: () => import('@/views/componentClass/inputPopupSelect/index.vue'),
     meta: { name: '输入框弹窗选择', type: 'list' }
   },
+  // 停车模块
+  {
+    path: '/parkingModel',
+    name: 'parkingModel',
+    component: () => import('@/views/parkingModel/index.vue'),
+    meta: { name: '停车模块', type: 'list' }
+  },
   {
     path: '/singleOrderList',
     name: 'singleOrderList',
-    component: () => import('@/views/componentClass/singleOrderList/index.vue'),
-    meta: { name: '当个订单订单详情', type: 'list' }
+    component: () => import('@/views/parkingModel/singleOrderList/index.vue'),
+    meta: { name: '单个订单订单详情', type: 'list' }
   },
   {
     path: '/multipleOrderList',
     name: 'multipleOrderList',
-    component: () => import('@/views/componentClass/multipleOrderList/index.vue'),
+    component: () => import('@/views/parkingModel/multipleOrderList/index.vue'),
     meta: { name: '多个订单订单详情', type: 'list' }
   },
   // test

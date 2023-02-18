@@ -170,7 +170,7 @@ export default {
   .buttonItem {
     width: 93.6%;
     height: 40px;
-    background: green;
+    background: #43e97b;
     color: #ffffff;
     border-radius: 20px;
     margin-left: 3.2%;

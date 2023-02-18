@@ -1,8 +1,8 @@
 <!--
- * @Description:组件类 componentClass
+ * @Description:停车最小集组件
  * @Author: zhoucheng
  * @Github: https://github.com/zhoucheng-tt
- * @Date: 2022-11-20 19:51:47
+ * @Date: 2023-02-18 18:46:30
  * @LastEditors: zhoucheng
 -->
 <template>
@@ -32,9 +32,8 @@ export default {
     // 这里存放数据
     return {
       buttonList: [
-        { label: '车 牌 组 件', value: 'plateNumber' },
-        { label: '全选 / 全不选', value: 'selectAllOrNotAll' },
-        { label: '输入框弹窗选择', value: 'inputPopupSelect' }
+        { label: '单个订单订单详情', value: 'singleOrderList' },
+        { label: '多个订单订单详情', value: 'multipleOrderList' }
       ]
     }
   },

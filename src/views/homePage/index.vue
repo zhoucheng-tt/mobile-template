@@ -33,7 +33,8 @@ export default {
       buttonClassList: [
         { label: 'CSS类', value: 'cssClass' },
         { label: 'JS类', value: 'jsClass' },
-        { label: '组件类', value: 'componentClass' }
+        { label: '组件类', value: 'componentClass' },
+        { label: '停车最小集', value: 'parkingModel' }
       ]
     }
   },

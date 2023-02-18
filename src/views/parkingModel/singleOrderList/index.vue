@@ -27,12 +27,12 @@
           <van-col class="detail">{{orderList.parkSpaceNumber}}</van-col>
         </van-row>
         <van-row class="lineItem">
-          <van-col class="title">停车时长</van-col>
-          <van-col class="detail">{{orderList.parkDuration}}</van-col>
-        </van-row>
-        <van-row class="lineItem">
           <van-col class="title">开始时间</van-col>
           <van-col class="detail">{{orderList.entranceTime}}</van-col>
+        </van-row>
+        <van-row class="lineItem">
+          <van-col class="title">停车时长</van-col>
+          <van-col class="detail">{{orderList.parkDuration}}</van-col>
         </van-row>
         <van-row class="lineItem">
           <van-col class="title">计费规则</van-col>
