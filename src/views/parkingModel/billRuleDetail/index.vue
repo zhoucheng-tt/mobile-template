@@ -1,13 +1,14 @@
 <!--
- * @Description:计费规则详情
+ * @Description:计费规则详情 billRuleDetail
  * @Author: zhoucheng
  * @Github: https://github.com/zhoucheng-tt
- * @Date: 2023-02-09 17:06:28
+ * @Date: 2023-02-20 10:01:30
  * @LastEditors: zhoucheng
 -->
-
 <template>
-  <div class=''></div>
+  <div class='mainbody'>
+    1312
+  </div>
 </template>
 
 <script>
@@ -48,6 +49,6 @@ export default {
   activated () { } // 如果页面有keep-alive缓存功能，这个函数会触发
 }
 </script>
-<style lang='scss' scoped>
+<style lang='less' scoped>
 //@import url(); 引入公共css类
 </style>

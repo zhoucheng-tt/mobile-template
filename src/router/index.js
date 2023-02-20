@@ -99,6 +99,12 @@ const routes = [
     component: () => import('@/views/componentClass/inputPopupSelect/index.vue'),
     meta: { name: '输入框弹窗选择', type: 'list' }
   },
+  {
+    path: '/uploadSinglePic',
+    name: 'uploadSinglePic',
+    component: () => import('@/views/componentClass/uploadSinglePic/index.vue'),
+    meta: { name: '单个图片上传', type: 'list' }
+  },
   // 停车模块
   {
     path: '/parkingModel',
@@ -117,6 +123,12 @@ const routes = [
     name: 'multipleOrderList',
     component: () => import('@/views/parkingModel/multipleOrderList/index.vue'),
     meta: { name: '多个订单订单详情', type: 'list' }
+  },
+  {
+    path: '/billRuleDetail',
+    name: 'billRuleDetail',
+    component: () => import('@/views/parkingModel/billRuleDetail/index.vue'),
+    meta: { name: '计费规则详情', type: 'list' }
   },
   // test
   {

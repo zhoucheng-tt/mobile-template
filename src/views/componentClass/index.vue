@@ -34,7 +34,8 @@ export default {
       buttonList: [
         { label: '车 牌 组 件', value: 'plateNumber' },
         { label: '全选 / 全不选', value: 'selectAllOrNotAll' },
-        { label: '输入框弹窗选择', value: 'inputPopupSelect' }
+        { label: '输入框弹窗选择', value: 'inputPopupSelect' },
+        { label: '上传单个图片', value: 'uploadSinglePic' }
       ]
     }
   },

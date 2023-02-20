@@ -16,7 +16,7 @@ module.exports = {
   devServer: {
     proxy: {
       '/api/': {
-        target: 'http://192.168.1.228:10001/', // 不可为空
+        target: 'http://192.168.1.201:10001/', // 不可为空
         changeOrigin: true,
         ws: true,
         pathRewrite: {

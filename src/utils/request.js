@@ -20,7 +20,9 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(
   config => {
-    config.headers.userToken = localStorage.getItem('userToken')
+    // config.headers.userToken = localStorage.getItem('userToken')
+    config.headers.userToken = '61d580d935d01f9ee64e76ffdf13d9ae' // 公司
+
     return config
   },
   error => {

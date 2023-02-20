@@ -6,6 +6,9 @@
  * @LastEditors: zhoucheng
  */
 
+// 公用方法
+import * as commonApi from './commonApi/commonApi.js'
+
 import * as demo from './demo/demo.js'
 
 const install = function (Vue) {
@@ -13,11 +16,8 @@ const install = function (Vue) {
     return (install.installed = true)
   }
   Object.defineProperties(Vue.prototype, {
-    $demo: {
-      get () {
-        return demo
-      }
-    }
+    $commonApi: { get () { return commonApi } },
+    $demo: { get () { return demo } }
   })
 }
 
