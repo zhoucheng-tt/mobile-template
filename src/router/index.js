@@ -130,6 +130,13 @@ const routes = [
     component: () => import('@/views/parkingModel/billRuleDetail/index.vue'),
     meta: { name: '计费规则详情', type: 'list' }
   },
+  // 微信公众号
+  {
+    path: '/officialAccount',
+    name: 'officialAccount',
+    component: () => import('@/views/officialAccount/index.vue'),
+    meta: { name: '微信公众号', type: 'list' }
+  },
   // test
   {
     path: '/test',

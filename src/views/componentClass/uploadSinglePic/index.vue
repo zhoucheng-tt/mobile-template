@@ -60,6 +60,7 @@ export default {
       reader.readAsDataURL(file)
       // 图片加载
       reader.onload = () => {
+        // 这里可以做业务处理
         if (file.type !== 'image/webp') {
           this.$toast('请上传 webp 格式图片')
           return false

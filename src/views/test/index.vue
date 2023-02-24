@@ -7,12 +7,15 @@
 -->
 <template>
   <div class='mainbody'>
-    <div class="content"
+    <!-- <div class="content"
          ref="contentRef">
       <div class="title"
            ref="titleRef">
         123
       </div>
+    </div> -->
+    <div>
+
     </div>
   </div>
 </template>
