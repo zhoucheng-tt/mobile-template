@@ -6,7 +6,7 @@
  * @LastEditors: zhoucheng
  */
 
-export default function formatDate (date, fmt) {
+export default function dateFmt (date, fmt) {
   if (!(date instanceof Date)) {
     return date
   }

@@ -137,6 +137,12 @@ const routes = [
     component: () => import('@/views/officialAccount/index.vue'),
     meta: { name: '微信公众号', type: 'list' }
   },
+  {
+    path: '/useNavigate',
+    name: 'useNavigate',
+    component: () => import('@/views/officialAccount/useNavigate/index.vue'),
+    meta: { name: '导航', type: 'list' }
+  },
   // test
   {
     path: '/test',

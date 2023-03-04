@@ -32,7 +32,7 @@ export default {
     // 这里存放数据
     return {
       buttonList: [
-        // { label: '纵向轮播', value: 'longitudinalShuffling' }
+        { label: '导航', value: 'useNavigate' }
       ]
     }
   },

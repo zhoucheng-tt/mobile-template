@@ -114,7 +114,7 @@ export default {
       checkboxGroupResult: [],
       orderList: [],
       orderIds: [],
-      current: this.$fmtDate(new Date(), 'yyyy-MM-dd hh:mm:ss')
+      current: this.$dateFmt(new Date(), 'yyyy-MM-dd hh:mm:ss')
     }
   },
   // 监听属性 类似于data概念
