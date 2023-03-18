@@ -10,7 +10,7 @@
     <van-nav-bar :title=$route.query.titleName
                  left-text="返回"
                  left-arrow
-                 @click-left="handleClickTitleLeft" />
+                 @click-left="$router.go(-1)" />
     <div id="img"
          style="width:100;height:100"></div>
   </div>
@@ -120,11 +120,8 @@ export default {
       // 指定格式 PNG
       image.src = canvas.toDataURL('image/png')
       return image
-    },
-    // 点击返回
-    handleClickTitleLeft () {
-      this.$router.go(-1)
     }
+
   },
   beforeCreate () { }, // 生命周期 - 创建之前
   beforeMount () { }, // 生命周期 - 挂载之前

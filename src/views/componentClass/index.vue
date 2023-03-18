@@ -10,7 +10,7 @@
     <van-nav-bar :title=$route.query.titleName
                  left-text="返回"
                  left-arrow
-                 @click-left="handleClickTitleLeft"
+                 @click-left="$router.go(-1)"
                  class="navbar" />
     <van-row class="content">
       <van-button class="buttonItem"
@@ -35,7 +35,8 @@ export default {
         { label: '车 牌 组 件', value: 'plateNumber' },
         { label: '全选 / 全不选', value: 'selectAllOrNotAll' },
         { label: '输入框弹窗选择', value: 'inputPopupSelect' },
-        { label: '上传单个图片', value: 'uploadSinglePic' }
+        { label: '上传单个图片', value: 'uploadSinglePic' },
+        { label: '上传单个图片带水印', value: 'uploadSinglePicWithMark' }
       ]
     }
   },
@@ -53,10 +54,7 @@ export default {
   },
   // 方法集合
   methods: {
-    // 点击返回
-    handleClickTitleLeft () {
-      this.$router.go(-1)
-    }
+
   },
   beforeCreate () { }, // 生命周期 - 创建之前
   beforeMount () { }, // 生命周期 - 挂载之前

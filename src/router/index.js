@@ -105,6 +105,12 @@ const routes = [
     component: () => import('@/views/componentClass/uploadSinglePic/index.vue'),
     meta: { name: '单个图片上传', type: 'list' }
   },
+  {
+    path: '/uploadSinglePicWithMark',
+    name: 'uploadSinglePicWithMark',
+    component: () => import('@/views/componentClass/uploadSinglePicWithMark/index.vue'),
+    meta: { name: '单个图片上传带水印', type: 'list' }
+  },
   // 停车模块
   {
     path: '/parkingModel',

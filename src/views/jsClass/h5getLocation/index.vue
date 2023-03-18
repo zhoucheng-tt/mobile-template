@@ -10,7 +10,7 @@
     <van-nav-bar :title=$route.query.titleName
                  left-text="返回"
                  left-arrow
-                 @click-left="handleClickTitleLeft" />
+                 @click-left="$router.go(-1)" />
     <!-- 百度地图 -->
     <van-row>
       百度地图地址: {{ baiduAddress }} <br />
@@ -145,11 +145,8 @@ export default {
     showError (error) {
       // 会抱nerworkError
       console.log(error, '失败')
-    },
-    // 点击返回
-    handleClickTitleLeft () {
-      this.$router.go(-1)
     }
+
   },
   beforeCreate () { }, // 生命周期 - 创建之前
   beforeMount () { }, // 生命周期 - 挂载之前

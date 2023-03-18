@@ -11,7 +11,7 @@
     <van-nav-bar :title=$route.query.titleName
                  left-text="返回"
                  left-arrow
-                 @click-left="handleClickTitleLeft" />
+                 @click-left="$router.go(-1)" />
     <div class="content">
       <div class="content-title">
         <div class="line"></div>
@@ -169,11 +169,8 @@ export default {
     // 键盘点击事件
     handleKeyboardClick (value) {
       this.$refs.numInput.setInput(value) // 将点击的值传入父组件
-    },
-    // 点击返回
-    handleClickTitleLeft () {
-      this.$router.go(-1)
     }
+
   }
 }
 </script>

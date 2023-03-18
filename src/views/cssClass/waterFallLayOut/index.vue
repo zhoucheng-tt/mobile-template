@@ -10,7 +10,7 @@
     <van-nav-bar :title=$route.query.titleName
                  left-text="返回"
                  left-arrow
-                 @click-left="handleClickTitleLeft" />
+                 @click-left="$router.go(-1)" />
     <!-- 内容由很多宽相同高不同的div组成 -->
     <div class="content">
       <div class="item"
@@ -154,11 +154,8 @@ export default {
         item[itemRight.idx].style.top = leftTop + unit
         rightHeightSum = rightHeightSum + Number(window.getComputedStyle(item[itemRight.idx]).getPropertyValue('height').split(unit)[0])
       })
-    },
-    // 点击返回
-    handleClickTitleLeft () {
-      this.$router.go(-1)
     }
+
   },
   beforeCreate () { }, // 生命周期 - 创建之前
   beforeMount () { }, // 生命周期 - 挂载之前

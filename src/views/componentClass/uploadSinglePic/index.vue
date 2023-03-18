@@ -10,7 +10,7 @@
     <van-nav-bar :title=$route.query.titleName
                  left-text="返回"
                  left-arrow
-                 @click-left="handleClickTitleLeft" />
+                 @click-left="$router.go(-1)" />
     <!-- 上传图片 -->
     <div class="content">
       <van-uploader class="uploadBack"
@@ -92,7 +92,7 @@ export default {
           self.$commonApi.upFile(formData).then(res => {
             file.status = 'done'
             self.picUrl = res.resultEntity
-            console.log('图片上传成功', res)
+            console.log('图片上传成功', res.resultEntity)
           }).catch(err => {
             file.status = 'failed'
             file.message = '上传失败'
@@ -109,10 +109,6 @@ export default {
     // 图片删除
     deletePic () {
       this.picUrl = ''
-    },
-    // 点击返回
-    handleClickTitleLeft () {
-      this.$router.go(-1)
     }
   },
   beforeCreate () { }, // 生命周期 - 创建之前

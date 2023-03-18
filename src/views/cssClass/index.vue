@@ -10,7 +10,7 @@
     <van-nav-bar :title=$route.query.titleName
                  left-text="返回"
                  left-arrow
-                 @click-left="handleClickTitleLeft"
+                 @click-left="$router.go(-1)"
                  class="navbar" />
     <van-row class="content">
       <van-button class="buttonItem"
@@ -51,10 +51,7 @@ export default {
   },
   // 方法集合
   methods: {
-    // 点击返回
-    handleClickTitleLeft () {
-      this.$router.go(-1)
-    }
+
   },
   beforeCreate () { }, // 生命周期 - 创建之前
   beforeMount () { }, // 生命周期 - 挂载之前

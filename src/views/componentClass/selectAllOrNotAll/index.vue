@@ -10,7 +10,7 @@
     <van-nav-bar :title=$route.query.titleName
                  left-text="返回"
                  left-arrow
-                 @click-left="handleClickTitleLeft" />
+                 @click-left="$router.go(-1)" />
     <!-- 业务组件 -->
     <van-row class="content">
       <van-checkbox-group ref="checkboxGroup"
