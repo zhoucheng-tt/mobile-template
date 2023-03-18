@@ -38,78 +38,10 @@ export default {
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted () {
-    this.run()
+    console.log(new Date().Fmt('yyyy-MM-dd'))
   },
   // 方法集合
   methods: {
-    // 运行
-    async run () {
-      const imgUrl = require('@/assets/background/back.jpeg')
-      // 1.图片路径转成canvas
-      const tempCanvas = await this.imgToCanvas(imgUrl)
-      // 2.canvas添加水印
-      this.drawWaterMark(tempCanvas, ['第一行内容', '第二行内容', '第三行内容'])
-      // 3.canvas转成img
-      const img = this.convasToImg(tempCanvas)
-      // 查看效果
-      document.getElementById('img').appendChild(img, 0, 0, tempCanvas.width, tempCanvas.height)
-    },
-    // 图片路径转成canvas
-    async imgToCanvas (url) {
-      // 创建img元素
-      const img = document.createElement('img')
-      img.src = url
-      // 防止跨域引起的 Failed to execute 'toDataURL' on 'HTMLCanvasElement': Tainted canvases may not be exported.
-      img.setAttribute('crossOrigin', 'anonymous')
-      await new Promise((resolve) => (img.onload = resolve))
-      // 创建canvas DOM元素，并设置其宽高和图片一样
-      const canvas = document.createElement('canvas')
-      canvas.width = 414
-      canvas.height = 300
-      canvas.getContext('2d').drawImage(img, 0, 0, 414, 300)
-      return canvas
-    },
-    drawWaterMark (canvas, textArray) {
-      const ctx = canvas.getContext('2d')
-      const wmConfig = {
-        font: 'microsoft yahei',
-        textArray: textArray,
-        density: 2.5
-      }
-      const fontSize = 20
-      const imgWidth = canvas.width
-      const imgHeight = canvas.height
-      ctx.fillStyle = 'white'
-      ctx.font = `${fontSize}px ${wmConfig.font}`
-      ctx.lineWidth = 1
-      ctx.fillStyle = 'rgba(255,255,255,1)'
-      ctx.textAlign = 'left'
-      ctx.textBaseline = 'middle'
-      const maxPx = Math.max(imgWidth, imgHeight)
-      const stepPx = Math.floor(maxPx / wmConfig.density)
-      const arrayX = [0]// 初始水印位置 canvas坐标 0 0 点
-      arrayX.push(stepPx)
-      ctx.save()
-      ctx.translate(10, 20) // 画布旋转原点 移到 图片
-      if (wmConfig.textArray.length > 3) { // 最多显示三行水印，也可以根据需要自定义
-        wmConfig.textArray = wmConfig.textArray.slice(0, 3)
-      }
-      wmConfig.textArray.forEach((el, index) => {
-        const offsetY = fontSize * index + 2
-        ctx.fillText(el, arrayX[0], arrayX[0] + offsetY)
-      })
-      ctx.restore()
-    },
-    // canvas转成img
-    convasToImg (canvas) {
-      // 新建Image对象，可以理解为DOM
-      var image = new Image()
-      // canvas.toDataURL 返回的是一串Base64编码的URL
-      // 指定格式 PNG
-      image.src = canvas.toDataURL('image/png')
-      return image
-    }
-
   },
   beforeCreate () { }, // 生命周期 - 创建之前
   beforeMount () { }, // 生命周期 - 挂载之前

@@ -15,6 +15,9 @@ import './styles/index.less'
 import api from './api/index'
 import publicVar from './utils/publicVar'
 
+import dateFmt from './utils/dateFmt'
+Vue.prototype.$dateFmt = dateFmt
+
 Vue.use(api)
 Vue.use(Vant)
 Vue.config.productionTip = false
