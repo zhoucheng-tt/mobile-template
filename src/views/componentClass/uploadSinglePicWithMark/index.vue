@@ -16,7 +16,6 @@
       <van-uploader class="uploadBack"
                     v-model="fileList"
                     :after-read="afterRead"
-                    @click-preview="preview"
                     @delete="deletePic"
                     max-count="1">
         <van-image v-if="!picUrl"
@@ -67,6 +66,7 @@ export default {
       file.status = 'uploading'
       file.message = '上传中...'
 
+      // base64
       const reader = new FileReader()
       reader.readAsDataURL(file.file)
       reader.onload = () => {
@@ -83,7 +83,7 @@ export default {
     // 加水印
     async getImgUrl ({ base64, cb = null }) {
       // 1.图片路径转成canvas
-      const tempCanvas = await this.imgToCanvas(base64)
+      const tempCanvas = await this.imgToCanvas(base64, 'van-uploader')
       // 2.canvas添加水印
       this.drawWaterMark(tempCanvas, this.contentList)
       // 3.canvas转成img
@@ -92,17 +92,17 @@ export default {
       cb && cb(this.picUrl)
     },
     // 图片路径转成canvas
-    async imgToCanvas (url) {
+    async imgToCanvas (base64, className) {
       // 创建img元素
       const img = document.createElement('img')
-      img.src = url
+      img.src = base64
       // 防止跨域引起的 Failed to execute 'toDataURL' on 'HTMLCanvasElement': Tainted canvases may not be exported.
       img.setAttribute('crossOrigin', 'anonymous')
       await new Promise((resolve) => (img.onload = resolve))
       // 创建canvas DOM元素，并设置其宽高和图片一样
       const canvas = document.createElement('canvas')
-      canvas.width = document.getElementsByClassName('uploadBack')[0].offsetWidth
-      canvas.height = document.getElementsByClassName('uploadBack')[0].offsetHeight
+      canvas.width = document.getElementsByClassName(className)[0].offsetWidth
+      canvas.height = document.getElementsByClassName(className)[0].offsetHeight
       canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height)
       return canvas
     },
@@ -183,22 +183,22 @@ export default {
       new Compressor(file.file, {
         quality: 1,
         success (result) {
-          console.log(file.file)
           // 二进制
           // const formData = new FormData()
           // const blob = self.dataURItoBlob(file.content)
           // formData.append('file', blob, 'image.png')
-
           // 二进制
           const formData = new FormData()
           const blob = self.dataURItoBlob(file.content)
           // 将 Blob 对象转换成 File 对象
           result = new window.File([blob], blob.name, { type: blob.type })
           formData.append('file', result, 'image.png')
-
+          // 上传
           self.$commonApi.upFile(formData).then(res => {
             file.status = 'done'
             self.picUrl = res.resultEntity
+            // 设置预览
+            self.fileList[0].url = file.content
             console.log('图片上传成功', self.picUrl)
           }).catch(err => {
             file.status = 'failed'
@@ -212,10 +212,6 @@ export default {
           console.log('压缩失败', err)
         }
       })
-    },
-    // 预览
-    preview (val) {
-      // console.log(val.content)
     },
     // 图片删除
     deletePic () {
